@@ -11,10 +11,17 @@ public class IsDestroyable : MonoBehaviour
     {
         if(transform.localScale.x > 0.001f)
         {
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
-                GameObject newEnemy = Instantiate(enemy, transform.position, transform.rotation);
+                // Define a random offset
+                Vector3 randomOffset = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), Random.Range(-3f, 3f));
+
+                // Add the random offset to the position
+                GameObject newEnemy = Instantiate(enemy, transform.position + randomOffset, transform.rotation);
                 newEnemy.transform.localScale = transform.localScale * scaleDecrease;
+
+                // Copy properties from the parent target to the new target
+                newEnemy.GetComponent<IsDestroyable>().enemy = this.GetComponent<IsDestroyable>().enemy;
             }
         }
 

@@ -25,12 +25,12 @@ public class MoveLogic : MonoBehaviour
         {
             if(Input.GetKey(leftKey))
             {
-                rb.AddForce(new UnityEngine.Vector3(30.0f, 0.0f, 0.0f));
+                rb.AddForce(new UnityEngine.Vector3(-30.0f, 0.0f, 0.0f));
                 this.transform.Rotate(UnityEngine.Vector3.up, rotSpeed, Space.World);
             }
             if (Input.GetKey(rightKey))
             {
-                rb.AddForce(new UnityEngine.Vector3(-30.0f, 0.0f, 0.0f));
+                rb.AddForce(new UnityEngine.Vector3(30.0f, 0.0f, 0.0f));
                 this.transform.Rotate(UnityEngine.Vector3.up, -rotSpeed, Space.World);
             }
             if (Input.GetKey(upKey))

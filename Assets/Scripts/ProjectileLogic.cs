@@ -22,7 +22,8 @@ public class ProjectileLogic : MonoBehaviour
         if (c != null)
         {
             c.Split();
-           //Destroy(otherObj.gameObject);
+            // Destroy the bullet after 0.5 seconds
+            Destroy(this.gameObject, 0.5f);
         }
 
     }
