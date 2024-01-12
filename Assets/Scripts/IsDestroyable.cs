@@ -9,7 +9,7 @@ public class IsDestroyable : MonoBehaviour
 
     public void Split()
     {
-        if(transform.localScale.x > 0.1f)
+        if(transform.localScale.x > 0.001f)
         {
             for(int i = 0; i < 2; i++)
             {
@@ -17,6 +17,7 @@ public class IsDestroyable : MonoBehaviour
                 newEnemy.transform.localScale = transform.localScale * scaleDecrease;
             }
         }
+
         Destroy(this.gameObject);
     }
 
