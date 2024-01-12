@@ -17,7 +17,7 @@ public class IsDestroyable : MonoBehaviour
                 newEnemy.transform.localScale = transform.localScale * scaleDecrease;
             }
         }
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
 }
