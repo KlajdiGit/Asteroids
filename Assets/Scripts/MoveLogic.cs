@@ -38,7 +38,16 @@ public class MoveLogic : MonoBehaviour
                 rb.AddForce(new UnityEngine.Vector3(0.0f, 30.0f, 0.0f));
                 this.transform.Rotate(UnityEngine.Vector3.up, rotSpeed, Space.World);
             }
+        }  
+    }
+
+    private void OnCollisionEnter(Collision otherObj)
+    {
+        Component c = otherObj.gameObject.GetComponent<IsDestroyable>();
+        if (c != null)
+        {
+            Destroy(this.gameObject);
         }
-        
+
     }
 }
