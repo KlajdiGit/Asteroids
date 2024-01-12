@@ -18,10 +18,11 @@ public class ProjectileLogic : MonoBehaviour
 
     private void OnCollisionEnter(Collision otherObj)
     {
-        Component c = otherObj.gameObject.GetComponent<IsDestroyable>();
+        IsDestroyable c = otherObj.gameObject.GetComponent<IsDestroyable>();
         if (c != null)
         {
-           Destroy(otherObj.gameObject);
+            c.Split();
+           //Destroy(otherObj.gameObject);
         }
 
     }
