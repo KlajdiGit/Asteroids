@@ -27,5 +27,4 @@ public class IsDestroyable : MonoBehaviour
 
         Destroy(this.gameObject);
     }
-
 }
