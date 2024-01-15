@@ -43,7 +43,7 @@ public class IsDestroyable : MonoBehaviour
                 // Copy properties from the parent target to the new target
                 newEnemy.GetComponent<IsDestroyable>().enemy = this.GetComponent<IsDestroyable>().enemy;
             }
-        }
+        } 
 
         Destroy(this.gameObject);
     }
