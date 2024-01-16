@@ -38,6 +38,11 @@ public class MoveLogic : MonoBehaviour
                 rb.AddForce(new UnityEngine.Vector3(0.0f, 30.0f, 0.0f));
                 this.transform.Rotate(UnityEngine.Vector3.up, rotSpeed, Space.World);
             }
+            else
+            {
+                rb.AddForce(new UnityEngine.Vector3(0.0f, 0.0f, 0.0f));
+                this.transform.Rotate(UnityEngine.Vector3.up, rotSpeed, Space.World);
+            }
         }  
     }
 

@@ -10,6 +10,9 @@ public class MainCameraController : MonoBehaviour
 
     private void Update()
     {
-        transform.position = target.position - new Vector3(0,0, gap);
+        if (target != null)
+        {
+            transform.position = target.position - new Vector3(0, 0, gap);
+        }
     }
 }
