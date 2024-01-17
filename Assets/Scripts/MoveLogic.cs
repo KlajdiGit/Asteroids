@@ -25,17 +25,31 @@ public class MoveLogic : MonoBehaviour
         {
             if(Input.GetKey(leftKey))
             {
-                rb.AddForce(new UnityEngine.Vector3(-30.0f, 0.0f, 0.0f));
+                if(Mathf.Abs(this.transform.position.x) >= 150)
+                {
+                    rb.AddForce(new UnityEngine.Vector3(0.0f, 0.0f, 0.0f));
+                }
+
+                rb.AddForce(new UnityEngine.Vector3(-20.0f, 0.0f, 0.0f));
                 this.transform.Rotate(UnityEngine.Vector3.up, rotSpeed, Space.World);
             }
             if (Input.GetKey(rightKey))
             {
-                rb.AddForce(new UnityEngine.Vector3(30.0f, 0.0f, 0.0f));
+                if (Mathf.Abs(this.transform.position.x) >= 150)
+                {
+                    rb.AddForce(new UnityEngine.Vector3(0.0f, 0.0f, 0.0f));
+                }
+                rb.AddForce(new UnityEngine.Vector3(20.0f, 0.0f, 0.0f));
                 this.transform.Rotate(UnityEngine.Vector3.up, -rotSpeed, Space.World);
             }
             if (Input.GetKey(upKey))
             {
-                rb.AddForce(new UnityEngine.Vector3(0.0f, 30.0f, 0.0f));
+
+                if (Mathf.Abs(this.transform.position.y) >= 150)
+                {
+                    rb.AddForce(new UnityEngine.Vector3(0.0f, 0.0f, 0.0f));
+                }
+                rb.AddForce(new UnityEngine.Vector3(0.0f, 20.0f, 0.0f));
                 this.transform.Rotate(UnityEngine.Vector3.up, rotSpeed, Space.World);
             }
             else
