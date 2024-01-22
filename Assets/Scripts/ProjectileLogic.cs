@@ -24,6 +24,18 @@ public class ProjectileLogic : MonoBehaviour
             c.Split();
             // Destroy the bullet after 0.5 seconds
             Destroy(this.gameObject, 0.5f);
+            GameManager.Instance.score++;
+
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+            int isDestroyableCount = 0; ;
+            foreach (GameObject obj in allObjects)
+            {
+                if( obj.gameObject.GetComponent<IsDestroyable>())
+                {
+                    isDestroyableCount++;
+                }
+            }
+            GameManager.Instance.targetCount = isDestroyableCount;
         }
 
     }
