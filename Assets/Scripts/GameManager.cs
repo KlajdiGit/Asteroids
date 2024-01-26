@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         //targetCount = 1;
+      
+    }
+
+    private void CheckIsDestroyable()
+    {
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
         int isDestroyableCount = 0;
         foreach (GameObject obj in allObjects)
@@ -44,9 +49,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIsDestroyable();
+
         scoreGui.text = score.ToString();
         targetCountGui.text = targetCount.ToString();
-        if (GameManager.Instance.targetCount == 1)
+        if (GameManager.Instance.targetCount == 0)
         {
             winGame.text = "YOU WIN!!!";
         }
