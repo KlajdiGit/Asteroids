@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ProjectileLogic : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class ProjectileLogic : MonoBehaviour
             GameManager.Instance.score++;
 
             GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-            int isDestroyableCount = 0; ;
+            int isDestroyableCount = 0; 
             foreach (GameObject obj in allObjects)
             {
                 if( obj.gameObject.GetComponent<IsDestroyable>())

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IsDestroyable : MonoBehaviour
 {
+
     [SerializeField] private GameObject enemy;
     [SerializeField] private float scaleDecrease = 0.5f;
 
@@ -18,18 +19,18 @@ public class IsDestroyable : MonoBehaviour
 
     void Update()
     {
-        this.transform.position += direction * speed * Time.deltaTime;
+        //this.transform.position += direction * speed * Time.deltaTime;
         
-        if(Mathf.Abs(this.transform.position.x) > 50.0f || Mathf.Abs(transform.position.y) > 50.0f
-           || Mathf.Abs(transform.position.z) > 50.0f)
-        {
-            direction *= -1;
-        }
+        //if(Mathf.Abs(this.transform.position.x) > 50.0f || Mathf.Abs(transform.position.y) > 50.0f
+        //   || Mathf.Abs(transform.position.z) > 50.0f)
+        //{
+        //    direction *= -1;
+        //}
     }
 
     public void Split()
     {
-        if(transform.localScale.x > 0.001f)
+        if (transform.localScale.x > 15.0f)
         {
             for (int i = 0; i < 2; i++)
             {
@@ -43,8 +44,9 @@ public class IsDestroyable : MonoBehaviour
                 // Copy properties from the parent target to the new target
                 newEnemy.GetComponent<IsDestroyable>().enemy = this.GetComponent<IsDestroyable>().enemy;
             }
-        } 
+        }
 
         Destroy(this.gameObject);
+       
     }
 }

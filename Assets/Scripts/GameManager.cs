@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreGui;
     [SerializeField] private TextMeshProUGUI targetCountGui;
+    [SerializeField] private TextMeshProUGUI winGame;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,17 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         score = 0;
-        targetCount = 3;
+        //targetCount = 1;
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        int isDestroyableCount = 0;
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.gameObject.GetComponent<IsDestroyable>())
+            {
+                isDestroyableCount++;
+            }
+        }
+        targetCount = isDestroyableCount;
     }
 
     // Update is called once per frame
@@ -35,6 +46,10 @@ public class GameManager : MonoBehaviour
     {
         scoreGui.text = score.ToString();
         targetCountGui.text = targetCount.ToString();
+        if (GameManager.Instance.targetCount == 1)
+        {
+            winGame.text = "YOU WIN!!!";
+        }
     }
 
 }
