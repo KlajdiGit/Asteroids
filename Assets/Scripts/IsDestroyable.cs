@@ -10,23 +10,20 @@ public class IsDestroyable : MonoBehaviour
 
     [SerializeField] private float speed = 1.0f;
     private Vector3 direction;
+  //  private SplitResponse splitResponse;
 
     void Start()
     {
         direction = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+        
     }
 
 
     void Update()
     {
-        //this.transform.position += direction * speed * Time.deltaTime;
-        
-        //if(Mathf.Abs(this.transform.position.x) > 50.0f || Mathf.Abs(transform.position.y) > 50.0f
-        //   || Mathf.Abs(transform.position.z) > 50.0f)
-        //{
-        //    direction *= -1;
-        //}
+        this.transform.position += direction * speed * Time.deltaTime;
     }
+
 
     public void Split()
     {
@@ -49,4 +46,18 @@ public class IsDestroyable : MonoBehaviour
         Destroy(this.gameObject);
        
     }
+    
+   /* public void Split()
+    {
+        if (transform.localScale.x > 15.0f)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                splitResponse.UpdateTransform(transform);
+                splitResponse.Dispatch();
+            }
+        }
+
+        Destroy(this.gameObject);
+    }*/
 }
