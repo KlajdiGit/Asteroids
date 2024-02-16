@@ -3,14 +3,18 @@ using UnityEngine;
 public class AstroidMoveResponse : Response
 {
     private Vector3 direction;
+    private float speed;
+    private Transform pos;
 
-    public AstroidMoveResponse()
+    public AstroidMoveResponse(Vector3 d, float s, Transform t)
     {
-        direction = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+        direction = d;
+        speed = s;
+        pos = t;
     }
 
     public override void Dispatch()
     {
-        
+        pos.position += direction * speed * Time.deltaTime;
     }
 }

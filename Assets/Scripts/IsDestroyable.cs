@@ -8,20 +8,20 @@ public class IsDestroyable : MonoBehaviour
     [SerializeField] private GameObject enemyClone;
     [SerializeField] private float scaleDecrease = 0.5f;
 
-    [SerializeField] private float speed = 1.0f;
+    [SerializeField] private float speed = 1.5f;
     private Vector3 direction;
-  //  private SplitResponse splitResponse;
+    private AstroidMoveResponse astroidMoveResponse;
 
     void Start()
     {
         direction = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
-        
+        astroidMoveResponse = new AstroidMoveResponse(direction, speed, this.transform);
     }
 
 
     void Update()
     {
-        this.transform.position += direction * speed * Time.deltaTime;
+        astroidMoveResponse.Dispatch();
     }
 
 

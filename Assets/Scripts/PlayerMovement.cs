@@ -40,4 +40,13 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Rotate(-pitch, yaw, -roll);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Component c = collision.gameObject.GetComponent<IsDestroyable>();
+        if (c != null)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
