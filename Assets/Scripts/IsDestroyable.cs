@@ -5,7 +5,7 @@ using UnityEngine;
 public class IsDestroyable : MonoBehaviour
 {
 
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject enemyClone;
     [SerializeField] private float scaleDecrease = 0.5f;
 
     [SerializeField] private float speed = 1.0f;
@@ -35,11 +35,11 @@ public class IsDestroyable : MonoBehaviour
                 Vector3 randomOffset = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), Random.Range(-3f, 3f));
 
                 // Add the random offset to the position
-                GameObject newEnemy = Instantiate(enemy, transform.position + randomOffset, transform.rotation);
+                GameObject newEnemy = Instantiate(enemyClone, transform.position + randomOffset, transform.rotation);
                 newEnemy.transform.localScale = transform.localScale * scaleDecrease;
 
                 // Copy properties from the parent target to the new target
-                newEnemy.GetComponent<IsDestroyable>().enemy = this.GetComponent<IsDestroyable>().enemy;
+                newEnemy.GetComponent<IsDestroyable>().enemyClone = this.GetComponent<IsDestroyable>().enemyClone;
             }
         }
 
@@ -47,17 +47,4 @@ public class IsDestroyable : MonoBehaviour
        
     }
     
-   /* public void Split()
-    {
-        if (transform.localScale.x > 15.0f)
-        {
-            for (int i = 0; i < 2; i++)
-            {
-                splitResponse.UpdateTransform(transform);
-                splitResponse.Dispatch();
-            }
-        }
-
-        Destroy(this.gameObject);
-    }*/
 }

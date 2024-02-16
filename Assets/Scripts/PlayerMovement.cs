@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    /* [SerializeField] private float movementSpeed = 25.0f;
-
-     private void Update()
-     {
-         transform.position += transform.forward * movementSpeed * Time.deltaTime * Input.GetAxis("Vertical");
-         transform.position += transform.right * movementSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
-     }*/
-
     [SerializeField] private float movementSpeed = 25.0f;
     [SerializeField] private Vector3 translation;
     [SerializeField] private Space space;
+    [SerializeField] float turnSpeed = 100f;
     private TranslateResponse translateResponse;
 
     void Start()
@@ -27,9 +20,24 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        Thrust();
+        Turn();
+    }
+
+    void Thrust()
+    {
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
             translateResponse.Dispatch();
         }
+    }
+
+    void Turn()
+    {
+        float yaw = turnSpeed * Time.deltaTime * Input.GetAxis("Horizontal"); // Rotation on Y
+        float pitch = turnSpeed * Time.deltaTime * Input.GetAxis("Pitch"); // Rotation on X
+        float roll = turnSpeed * Time.deltaTime * Input.GetAxis("Roll"); // Rotation on Z
+
+        transform.Rotate(-pitch, yaw, -roll);
     }
 }
