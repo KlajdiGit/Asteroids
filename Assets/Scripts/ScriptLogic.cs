@@ -7,13 +7,13 @@ public class ScriptLogic : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject bullet;
     [SerializeField] private KeyCode firekey;
-    private GetKeyCondition fire;
+    private GetKeyCondition fire = new();
     
 
     void Start()
     {
-        fire = new(firekey);
-
+       // fire = new(firekey);
+       fire.Key = firekey;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class ScriptLogic : MonoBehaviour
         //if (Input.GetKeyUp(firekey))
         if(fire.Eval())
         {
-            UnityEngine.Debug.Log("key was pressed");
+            //UnityEngine.Debug.Log("key was pressed");
             bullet = Instantiate(bullet, this.transform.position, this.transform.rotation);
         }
         
